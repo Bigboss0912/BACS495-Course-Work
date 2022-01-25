@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import logo from './logo.svg';
 
-function Header() {
+function Header({myName}) {
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +16,7 @@ function Header() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React with {myName}
         </a>
       </header>
     </div>
