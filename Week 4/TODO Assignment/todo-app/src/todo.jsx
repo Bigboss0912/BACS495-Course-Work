@@ -1,20 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 
 function TODO() {
   
-  const numbers = [];
+  const [task, setTask] = useState('');
   const tasks = [];
+
+  const addTask = (e) => {
+    setTask(e.target.value);
+    tasks.push(<li>{task}</li>);
+  }
 
   return (
     <div>
-      <table>
-        <form>
-          for (let index = 0; index < array.length; index++) {
-            
-            
+      <form>
+        <label>Tasks</label>
+        <input
+          onChange={addTask}
+          value={task}
+          type="text"
+        />
+        <button
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+      <div>
+        <ul>
+          for (let i = 0; i < array tasks.length; index++) {
+            <div>{tasks[i]}</div>
           }
-        </form>
-      </table>
+        </ul>
+      </div>
     </div>
   );
 }
