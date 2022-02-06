@@ -7,7 +7,18 @@ function TODO() {
 
   const addTask = (e) => {
     setTask(e.target.value);
-    tasks.push(<li>{task}</li>);
+    tasks.push(task);
+    console.log(task);
+  }
+
+  const TaskList = props => {
+    return (
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ul>
+    );
   }
 
   return (
@@ -15,22 +26,17 @@ function TODO() {
       <form>
         <label>Tasks</label>
         <input
-          onChange={addTask}
-          value={task}
           type="text"
         />
         <button
           type="submit"
+          onClick={addTask}
         >
-          Submit
+          Add
         </button>
       </form>
       <div>
-        <ul>
-          for (let i = 0; i < array tasks.length; index++) {
-            <div>{tasks[i]}</div>
-          }
-        </ul>
+        <TaskList />
       </div>
     </div>
   );
