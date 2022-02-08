@@ -1,0 +1,15 @@
+table {
+  border: 1px solid black;
+  width: 100%;
+}
+
+.taskTable {
+  font-weight: lighter;
+}
+
+label {
+  margin-left: 30%;
+}
+div {
+  padding: 10px;
+}
