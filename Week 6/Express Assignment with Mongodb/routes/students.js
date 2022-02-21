@@ -39,29 +39,32 @@ router.post('/', function (req, res) {
 });
 
 /* GET students listing. */
-router.get('/', async function(req, res) {
+router.get('/', function(req, res) {
 
-  const student_ID = {
+  var db = req.app.locals.db;
+  db.collection('students').find({}).toArray(function(err, result) {
+    if (err) {
+      res.status(400).send("Error fetching records!!!");
+    } else {
+      res.json(result);
+    }
+  });
+
+});
+
+router.get('/getByID', function(req, res) {
+  const student = {
     "studentId": req.body.studentID,
   }
 
   var db = req.app.locals.db;
-  const result = await db.collection('students').findOne(student_ID);
-  console.log(JSON.stringify(result));
-
-  res.send(
-    result
-  );
-});
-
-router.get('/:studentID', function(req, res) {
-  var id = req.params.studentID;
-  
-
-  for (let student of students ) {
-    if(student.studentID == id) {
-      res.json(student);
-    }}
+  db.collection('students').find(student).toArray(function(err, result) {
+    if (err) {
+      res.status(400).send("Error fetching records!!!");
+    } else {
+      res.json(result);
+    }
+  });
 
 });
 
